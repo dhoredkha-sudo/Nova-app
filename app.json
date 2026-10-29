@@ -1,0 +1,36 @@
+{
+  "expo": {
+    "name": "NOVA EDU",
+    "slug": "azim-r",
+    "owner": "azim4apps-team",
+    "scheme": "novaedu",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "dark",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#030806"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.novaedu.app"
+    },
+    "android": {
+      "package": "com.novaedu.app",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#030806"
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "9f0f6c06-2bb8-4e2c-b912-80ee4f14764d"
+      }
+    }
+  }
+}
