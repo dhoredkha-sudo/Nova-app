@@ -1,0 +1,22 @@
+name: EAS Build
+on: { workflow_dispatch: {}, push: { branches: [main] } }
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - run: npm install -g eas-cli
+      # NOTE for no-terminal / mobile builds: use `npm install`, NOT `npm ci`,
+      # because this project is shipped without a package-lock.json.
+      # The repo root on GitHub must contain App.js and package.json directly
+      # (upload the CONTENTS of the nova-edu folder, not the folder itself).
+      - run: npm install
+      - name: EAS Build (Android preview)
+        run: eas build --platform android --profile preview --non-interactive
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+          EXPO_PUBLIC_SUPABASE_URL: ${{ secrets.EXPO_PUBLIC_SUPABASE_URL }}
+          EXPO_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.EXPO_PUBLIC_SUPABASE_ANON_KEY }}
+          EXPO_PUBLIC_EAS_PROJECT_ID: ${{ secrets.EXPO_PUBLIC_EAS_PROJECT_ID }}
