@@ -31,6 +31,16 @@
       "eas": {
         "projectId": "9f0f6c06-2bb8-4e2c-b912-80ee4f14764d"
       }
-    }
+    },
+    "plugins": [
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "kotlinVersion": "1.9.25"
+          }
+        }
+      ]
+    ]
   }
 }
