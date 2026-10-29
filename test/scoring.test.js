@@ -1,1 +1,3 @@
-
+const { test } = require('node:test'); const assert = require('node:assert');
+function scoreAttempt(answers, questions, marking={correct:4,negative:1}){ let score=0,correct=0,wrong=0,skipped=0; for(const q of questions){ const a=answers[q.id]; if(a===undefined||a===null||a==='') skipped++; else if(a===q.answer){correct++;score+=marking.correct;} else {wrong++;score-=marking.negative;} } return {score,correct,wrong,skipped,total:questions.length}; }
+test('scoring: correct, wrong and skipped', ()=>{ const qs=[{id:'1',answer:0},{id:'2',answer:1},{id:'3',answer:0}]; assert.deepEqual(scoreAttempt({1:0,2:0},qs),{score:3,correct:1,wrong:1,skipped:1,total:3}); });
